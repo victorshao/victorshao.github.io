@@ -1,0 +1,15 @@
+# Include your project-specific ignores in this file
+# Read about how to use .gitignore: https://help.github.com/articles/ignoring-files
+
+.editorconfig
+.gitattributes
+.htaccess
+LICENSE.txt
+apple-touch-icon.png
+download_hero_pics.py
+favicon.ico
+humans.txt
+img/
+robots.txt
+tile-wide.png
+tile.png

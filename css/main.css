@@ -95,21 +95,26 @@ textarea {
    Author's custom styles
    ========================================================================== */
 
+ul.rig {
+    list-style: none;
+    font-size: 0px;
+    padding: 0px;
+}
 
+ul.rig li {
+    display: inline-block;
+    background: #fff;
+    width: 9%;
 
+    border: 1px solid #ddd;
+    box-shadow: 0 0 5px #ddd;
+}
 
-
-
-
-
-
-
-
-
-
-
-
-
+ul.rig li img {
+    width: 100%;
+    border: 1px solid #ddd;
+    box-shadow: 0 0 5px #ddd;
+}
 
 /* ==========================================================================
    Helper classes
