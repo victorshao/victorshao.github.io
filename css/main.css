@@ -104,16 +104,19 @@ ul.rig {
 ul.rig li {
     display: inline-block;
     background: #fff;
-    width: 9%;
-
+    width: 9.5%;
     border: 1px solid #ddd;
     box-shadow: 0 0 5px #ddd;
 }
 
+ul.rig li.invis {
+    display: none;
+    border: none;
+    box-shadow: none;
+}
+
 ul.rig li img {
     width: 100%;
-    border: 1px solid #ddd;
-    box-shadow: 0 0 5px #ddd;
 }
 
 /* ==========================================================================
