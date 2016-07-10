@@ -119,6 +119,21 @@ ul.rig li img {
     width: 100%;
 }
 
+button.inactive {
+    opacity: 0.50;
+    color: gray;
+}
+
+button.show {
+    opacity: 1;
+    color: green;
+}
+
+button.hide {
+    text-decoration: line-through;
+    color: red;
+}
+
 /* ==========================================================================
    Helper classes
    ========================================================================== */

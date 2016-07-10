@@ -112,14 +112,52 @@ var roles = {
 	zeus: { 2: true, magic: true }
 };
 
-function showHeroes (value) {
-	for (var prop in roles) {
-		if (roles.hasOwnProperty(prop)) {
-			var img = document.getElementById(prop);
-			if (value === "none" || roles[prop].hasOwnProperty(value))
-				img.classList.remove("invis");
-			else
-				img.classList.add("invis");
-		}
+var show_ct = 0;
+for (var hero in roles) {
+	if (roles.hasOwnProperty(hero)) {
+		roles[hero]['show'] = 0;
+		roles[hero]['hide'] = 0;
 	}
+}
+
+function showHeroes(btn) {
+	if (btn.className === "inactive") {
+		btn.className = "show";
+		show_ct++;
+	} else if (btn.className === "show") {
+		btn.className = "hide";
+		show_ct--;
+	} else {
+		btn.className = "inactive";
+	}
+
+	for (var hero in roles)
+		if (roles.hasOwnProperty(hero)) {
+			if (roles[hero].hasOwnProperty(btn.value)) {
+				if (btn.className === "show")
+					roles[hero]['show']++;
+				else if (btn.className === "hide") {
+					roles[hero]['show']--;
+					roles[hero]['hide']++;
+				}
+				else
+					roles[hero]['hide']--;
+			}
+
+			var img = document.getElementById(hero);
+			if (roles[hero]['hide'] > 0 || roles[hero]['show'] < show_ct)
+				img.classList.add("invis");
+			else
+				img.classList.remove("invis");
+		}
+
+	// for (var prop in roles) {
+	// 	if (roles.hasOwnProperty(prop)) {
+	// 		var img = document.getElementById(prop);
+	// 		if (value === "none" || roles[prop].hasOwnProperty(value))
+	// 			img.classList.remove("invis");
+	// 		else
+	// 			img.classList.add("invis");
+	// 	}
+	// }
 }

@@ -20,9 +20,9 @@
         <![endif]-->
 
         <!-- Add your site or application content here -->
-        <script src="main.js"></script>
+        <script src="js/main.js"></script>
 
-        <select id="attr-list" onchange="showHeroes(this.value);">
+        <!-- <select id="attr-list" onchange="showHeroes(this.value);">
             <option value="none">None</option>
             <option value="1">Position 1</option>
             <option value="2">Position 2</option>
@@ -30,7 +30,15 @@
             <option value="4">Position 4</option>
             <option value="5">Position 5</option>
             <option value="magic">Magic damage</option>
-        </select>
+        </select> -->
+
+        <div>
+            <button value='1' class="inactive" onclick="showHeroes(this);">Pos 1</button>
+            <button value='2' class="inactive" onclick="showHeroes(this);">Pos 2</button>
+            <button value='3' class="inactive" onclick="showHeroes(this);">Pos 3</button>
+            <button value='4' class="inactive" onclick="showHeroes(this);">Pos 4</button>
+            <button value='5' class="inactive" onclick="showHeroes(this);">Pos 5</button>
+        </div>
 
         <ul class="rig">
             <li id="abaddon"><img src="hero_portraits/abaddon.jpg" /></li>
