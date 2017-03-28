@@ -95,43 +95,47 @@ textarea {
    Author's custom styles
    ========================================================================== */
 
-ul.rig {
-    list-style: none;
-    font-size: 0px;
-    padding: 0px;
+div {
+    position: relative;
 }
 
-ul.rig li {
+#galleryContainer {
+    background-color: #8c939e;
+    width: 800px;
+    z-index: 0;
+    margin: 0 auto;
+    padding: 15px 0;
+}
+
+#mainDisplay {
+    background-color: #101111;
+    width: 95%;
+    height: 400px;
+    z-index: 1;
+    margin: 0 auto;
+}
+
+#previews {
+    margin: 15px 2.5% 0;
+}
+
+.smallDisplay {
+    background-color: #101111;
+    width: 19%;
+    height: 100px;
     display: inline-block;
-    background: #fff;
-    width: 9.5%;
-    border: 1px solid #ddd;
-    box-shadow: 0 0 5px #ddd;
+    z-index: 2;
 }
 
-ul.rig li.invis {
-    display: none;
-    border: none;
-    box-shadow: none;
+#previews div + div {
+    margin-left: 1.25%;
 }
 
-ul.rig li img {
-    width: 100%;
-}
-
-button.inactive {
-    opacity: 0.50;
-    color: gray;
-}
-
-button.show {
-    opacity: 1;
-    color: green;
-}
-
-button.hide {
-    text-decoration: line-through;
-    color: red;
+img {
+    display: block;
+    max-width: 100%;
+    max-height: 100%;
+    margin: 0 auto;
 }
 
 /* ==========================================================================

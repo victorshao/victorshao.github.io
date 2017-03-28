@@ -19,154 +19,22 @@
             <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
 
-        <!-- Add your site or application content here -->
-        <script src="js/main.js"></script>
-
-        <!-- <select id="attr-list" onchange="showHeroes(this.value);">
-            <option value="none">None</option>
-            <option value="1">Position 1</option>
-            <option value="2">Position 2</option>
-            <option value="3">Position 3</option>
-            <option value="4">Position 4</option>
-            <option value="5">Position 5</option>
-            <option value="magic">Magic damage</option>
-        </select> -->
-
-        <div>
-            <button value='1' class="inactive" onclick="showHeroes(this);">Pos 1</button>
-            <button value='2' class="inactive" onclick="showHeroes(this);">Pos 2</button>
-            <button value='3' class="inactive" onclick="showHeroes(this);">Pos 3</button>
-            <button value='4' class="inactive" onclick="showHeroes(this);">Pos 4</button>
-            <button value='5' class="inactive" onclick="showHeroes(this);">Pos 5</button>
+        <!-- look into making this adaptable -->
+        <div id="galleryContainer">
+            <div id="mainDisplay"><img></div>
+            <div id="previews">
+                <div class="smallDisplay" onclick="updateMainDisplay(this)"><img src="img/1.jpg"></div><!--
+                --><div class="smallDisplay" onclick="updateMainDisplay(this)"><img src="img/2.jpg"></div><!--
+                --><div class="smallDisplay" onclick="updateMainDisplay(this)"><img src="img/3.jpg"></div><!--
+                --><div class="smallDisplay" onclick="updateMainDisplay(this)"><img src="img/4.jpg"></div><!--
+                --><div class="smallDisplay" onclick="updateMainDisplay(this)"><img src="img/5.jpg"></div>
+            </div>
         </div>
-
-        <ul class="rig">
-            <li id="abaddon"><img src="hero_portraits/abaddon.jpg" /></li>
-            <li id="alchemist"><img src="hero_portraits/alchemist.jpg" /></li>
-            <li id="ancient_apparition"><img src="hero_portraits/ancient_apparition.jpg" /></li>
-            <li id="antimage"><img src="hero_portraits/antimage.jpg" /></li>
-            <li id="arc_warden"><img src="hero_portraits/arc_warden.jpg" /></li>
-            <li id="axe"><img src="hero_portraits/axe.jpg" /></li>
-            <li id="bane"><img src="hero_portraits/bane.jpg" /></li>
-            <li id="batrider"><img src="hero_portraits/batrider.jpg" /></li>
-            <li id="beastmaster"><img src="hero_portraits/beastmaster.jpg" /></li>
-            <li id="bloodseeker"><img src="hero_portraits/bloodseeker.jpg" /></li>
-            <li id="bounty_hunter"><img src="hero_portraits/bounty_hunter.jpg" /></li>
-            <li id="brewmaster"><img src="hero_portraits/brewmaster.jpg" /></li>
-            <li id="bristleback"><img src="hero_portraits/bristleback.jpg" /></li>
-            <li id="broodmother"><img src="hero_portraits/broodmother.jpg" /></li>
-            <li id="centaur"><img src="hero_portraits/centaur.jpg" /></li>
-            <li id="chaos_knight"><img src="hero_portraits/chaos_knight.jpg" /></li>
-            <li id="chen"><img src="hero_portraits/chen.jpg" /></li>
-            <li id="clinkz"><img src="hero_portraits/clinkz.jpg" /></li>
-            <li id="clockwerk"><img src="hero_portraits/clockwerk.jpg" /></li>
-            <li id="crystal_maiden"><img src="hero_portraits/crystal_maiden.jpg" /></li>
-            <li id="dark_seer"><img src="hero_portraits/dark_seer.jpg" /></li>
-            <li id="dazzle"><img src="hero_portraits/dazzle.jpg" /></li>
-            <li id="death_prophet"><img src="hero_portraits/death_prophet.jpg" /></li>
-            <li id="disruptor"><img src="hero_portraits/disruptor.jpg" /></li>
-            <li id="doom"><img src="hero_portraits/doom.jpg" /></li>
-            <li id="dragon_knight"><img src="hero_portraits/dragon_knight.jpg" /></li>
-            <li id="drow_ranger"><img src="hero_portraits/drow_ranger.jpg" /></li>
-            <li id="earth_spirit"><img src="hero_portraits/earth_spirit.jpg" /></li>
-            <li id="earthshaker"><img src="hero_portraits/earthshaker.jpg" /></li>
-            <li id="elder_titan"><img src="hero_portraits/elder_titan.jpg" /></li>
-            <li id="ember_spirit"><img src="hero_portraits/ember_spirit.jpg" /></li>
-            <li id="enchantress"><img src="hero_portraits/enchantress.jpg" /></li>
-            <li id="enigma"><img src="hero_portraits/enigma.jpg" /></li>
-            <li id="faceless_void"><img src="hero_portraits/faceless_void.jpg" /></li>
-            <li id="gyrocopter"><img src="hero_portraits/gyrocopter.jpg" /></li>
-            <li id="huskar"><img src="hero_portraits/huskar.jpg" /></li>
-            <li id="invoker"><img src="hero_portraits/invoker.jpg" /></li>
-            <li id="jakiro"><img src="hero_portraits/jakiro.jpg" /></li>
-            <li id="juggernaut"><img src="hero_portraits/juggernaut.jpg" /></li>
-            <li id="keeper_of_the_light"><img src="hero_portraits/keeper_of_the_light.jpg" /></li>
-            <li id="kunkka"><img src="hero_portraits/kunkka.jpg" /></li>
-            <li id="legion_commander"><img src="hero_portraits/legion_commander.jpg" /></li>
-            <li id="leshrac"><img src="hero_portraits/leshrac.jpg" /></li>
-            <li id="lich"><img src="hero_portraits/lich.jpg" /></li>
-            <li id="lifestealer"><img src="hero_portraits/lifestealer.jpg" /></li>
-            <li id="lina"><img src="hero_portraits/lina.jpg" /></li>
-            <li id="lion"><img src="hero_portraits/lion.jpg" /></li>
-            <li id="lone_druid"><img src="hero_portraits/lone_druid.jpg" /></li>
-            <li id="luna"><img src="hero_portraits/luna.jpg" /></li>
-            <li id="lycan"><img src="hero_portraits/lycan.jpg" /></li>
-            <li id="magnus"><img src="hero_portraits/magnus.jpg" /></li>
-            <li id="medusa"><img src="hero_portraits/medusa.jpg" /></li>
-            <li id="meepo"><img src="hero_portraits/meepo.jpg" /></li>
-            <li id="mirana"><img src="hero_portraits/mirana.jpg" /></li>
-            <li id="morphling"><img src="hero_portraits/morphling.jpg" /></li>
-            <li id="naga_siren"><img src="hero_portraits/naga_siren.jpg" /></li>
-            <li id="natures_prophet"><img src="hero_portraits/natures_prophet.jpg" /></li>
-            <li id="necrophos"><img src="hero_portraits/necrophos.jpg" /></li>
-            <li id="night_stalker"><img src="hero_portraits/night_stalker.jpg" /></li>
-            <li id="nyx_assassin"><img src="hero_portraits/nyx_assassin.jpg" /></li>
-            <li id="ogre_magi"><img src="hero_portraits/ogre_magi.jpg" /></li>
-            <li id="omniknight"><img src="hero_portraits/omniknight.jpg" /></li>
-            <li id="oracle"><img src="hero_portraits/oracle.jpg" /></li>
-            <li id="outworld_devourer"><img src="hero_portraits/outworld_devourer.jpg" /></li>
-            <li id="phantom_assassin"><img src="hero_portraits/phantom_assassin.jpg" /></li>
-            <li id="phantom_lancer"><img src="hero_portraits/phantom_lancer.jpg" /></li>
-            <li id="phoenix"><img src="hero_portraits/phoenix.jpg" /></li>
-            <li id="puck"><img src="hero_portraits/puck.jpg" /></li>
-            <li id="pudge"><img src="hero_portraits/pudge.jpg" /></li>
-            <li id="pugna"><img src="hero_portraits/pugna.jpg" /></li>
-            <li id="queenofpain"><img src="hero_portraits/queenofpain.jpg" /></li>
-            <li id="razor"><img src="hero_portraits/razor.jpg" /></li>
-            <li id="riki"><img src="hero_portraits/riki.jpg" /></li>
-            <li id="rubick"><img src="hero_portraits/rubick.jpg" /></li>
-            <li id="sand_king"><img src="hero_portraits/sand_king.jpg" /></li>
-            <li id="shadow_demon"><img src="hero_portraits/shadow_demon.jpg" /></li>
-            <li id="shadow_fiend"><img src="hero_portraits/shadow_fiend.jpg" /></li>
-            <li id="shadow_shaman"><img src="hero_portraits/shadow_shaman.jpg" /></li>
-            <li id="silencer"><img src="hero_portraits/silencer.jpg" /></li>
-            <li id="skywrath_mage"><img src="hero_portraits/skywrath_mage.jpg" /></li>
-            <li id="slardar"><img src="hero_portraits/slardar.jpg" /></li>
-            <li id="slark"><img src="hero_portraits/slark.jpg" /></li>
-            <li id="sniper"><img src="hero_portraits/sniper.jpg" /></li>
-            <li id="spectre"><img src="hero_portraits/spectre.jpg" /></li>
-            <li id="spirit_breaker"><img src="hero_portraits/spirit_breaker.jpg" /></li>
-            <li id="storm_spirit"><img src="hero_portraits/storm_spirit.jpg" /></li>
-            <li id="sven"><img src="hero_portraits/sven.jpg" /></li>
-            <li id="techies"><img src="hero_portraits/techies.jpg" /></li>
-            <li id="templar_assassin"><img src="hero_portraits/templar_assassin.jpg" /></li>
-            <li id="terrorblade"><img src="hero_portraits/terrorblade.jpg" /></li>
-            <li id="tidehunter"><img src="hero_portraits/tidehunter.jpg" /></li>
-            <li id="timbersaw"><img src="hero_portraits/timbersaw.jpg" /></li>
-            <li id="tinker"><img src="hero_portraits/tinker.jpg" /></li>
-            <li id="tiny"><img src="hero_portraits/tiny.jpg" /></li>
-            <li id="treant"><img src="hero_portraits/treant.jpg" /></li>
-            <li id="troll_warlord"><img src="hero_portraits/troll_warlord.jpg" /></li>
-            <li id="tusk"><img src="hero_portraits/tusk.jpg" /></li>
-            <li id="undying"><img src="hero_portraits/undying.jpg" /></li>
-            <li id="ursa"><img src="hero_portraits/ursa.jpg" /></li>
-            <li id="vengeful_spirit"><img src="hero_portraits/vengeful_spirit.jpg" /></li>
-            <li id="venomancer"><img src="hero_portraits/venomancer.jpg" /></li>
-            <li id="viper"><img src="hero_portraits/viper.jpg" /></li>
-            <li id="visage"><img src="hero_portraits/visage.jpg" /></li>
-            <li id="warlock"><img src="hero_portraits/warlock.jpg" /></li>
-            <li id="weaver"><img src="hero_portraits/weaver.jpg" /></li>
-            <li id="windrunner"><img src="hero_portraits/windrunner.jpg" /></li>
-            <li id="winter_wyvern"><img src="hero_portraits/winter_wyvern.jpg" /></li>
-            <li id="wisp"><img src="hero_portraits/wisp.jpg" /></li>
-            <li id="witch_doctor"><img src="hero_portraits/witch_doctor.jpg" /></li>
-            <li id="wraith_king"><img src="hero_portraits/wraith_king.jpg" /></li>
-            <li id="zeus"><img src="hero_portraits/zeus.jpg" /></li>
-        </ul>
-
-        <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
-        <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.12.0.min.js"><\/script>')</script>
+        <!-- // <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script> -->
+        <!-- <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.12.0.min.js"><\/script>')</script> -->
+        <script src="js/vendor/jquery-3.1.1.js"></script>
         <script src="js/plugins.js"></script>
         <script src="js/main.js"></script>
 
-        <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
-        <script>
-            (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
-            function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
-            e=o.createElement(i);r=o.getElementsByTagName(i)[0];
-            e.src='https://www.google-analytics.com/analytics.js';
-            r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
-            ga('create','UA-XXXXX-X','auto');ga('send','pageview');
-        </script>
     </body>
 </html>
