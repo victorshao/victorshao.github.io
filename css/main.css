@@ -95,24 +95,33 @@ textarea {
    Author's custom styles
    ========================================================================== */
 
-div {
+body {
+    background-color: #000000;
+}
+
+#header, #footer {
     position: relative;
-    border: 1.5px solid #ffffff;
+    height: 50px;
+}
+
+.picture {
+    position: relative;
     display: inline-block;
     height: 150px;
     width: 150px;
+    margin-left: 5px;
     background-size: cover;
     background-position: center;
+    opacity: 0;
+    transition: opacity 0.75s linear;
 }
 
-img {
+.picture:hover {
     position: absolute;
-    display: block;
-    max-height: 100%;
-    max-width: 100%;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    height: 180px;
+    width: 180px;
+    box-shadow: 0 0 10px white;
+    z-index: 999;
 }
 
 /* ==========================================================================
