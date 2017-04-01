@@ -104,24 +104,34 @@ body {
     height: 50px;
 }
 
-.picture {
+.pictureContainer {
     position: relative;
     display: inline-block;
     height: 150px;
     width: 150px;
     margin-left: 5px;
+}
+
+.picture {
+    position: relative;
+    display: inline-block;
+    height: 150px;
+    width: 150px;
+    border-radius: 3px;
     background-size: cover;
     background-position: center;
     opacity: 0;
     transition: opacity 0.75s linear;
+    transition: transform 0.2s;
 }
 
 .picture:hover {
     position: absolute;
-    height: 180px;
-    width: 180px;
     box-shadow: 0 0 10px white;
     z-index: 999;
+    transform: scale(1.05);
+    transition: transform 0.2s;
+    transition: border-radius 0.2s;
 }
 
 /* ==========================================================================

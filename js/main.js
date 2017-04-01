@@ -8,10 +8,13 @@ showImages();
 function loadImages() {
 	var footer = document.getElementById('footer');
 	images.forEach(function(image) {
-		var div = document.createElement('div');
-		div.className = 'picture';
-		div.style['background-image'] = 'url("' + folder + image + '")';
-		document.body.insertBefore(div, footer);
+		var outerDiv = document.createElement('div');
+		var innerDiv = document.createElement('div');
+		outerDiv.appendChild(innerDiv);
+		outerDiv.className = 'pictureContainer';
+		innerDiv.className = 'picture';
+		innerDiv.style['background-image'] = 'url("' + folder + image + '")';
+		document.body.insertBefore(outerDiv, footer);
 	});
 }
 
@@ -24,8 +27,8 @@ function showImages() {
 function showImage(imageList, imageNum) {
 	imageList[imageNum].style.opacity = 1;
 	if (imageNum + 1 < imageList.length) {
-		setTimeout(function() {
+		// setTimeout(function() {
 			showImage(imageList, imageNum + 1);
-		}, 100);
+		// }, 100);
 	}
 }
