@@ -106,23 +106,23 @@ body {
 
 #overlay {
     visibility: hidden;
-    background-color: rgba(60, 60, 60, 0.9);
+    background-color: rgba(20, 20, 20, 0.9);
     position: fixed;
     height: 100%;
     width: 100%;
     z-index: 100;
 }
 
-#pictureViewer {
-    visibility: hidden;
-    opacity: 1;
+#bigPicViewer {
+    visibility: inherit;
     max-height: 95%;
-    max-width: 95%;
+    max-width: 80%;
     position: fixed;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     z-index: 200;
+    user-select: none;
 }
 
 .pictureContainer {
@@ -156,6 +156,18 @@ body {
     transform: scale(1.05);
     transition: transform 0.2s;
     transition: border-radius 0.2s;
+}
+
+#closeButton {
+    position: fixed;
+    visibility: inherit;
+    color: gray;
+    font-size: 25px;
+    line-height: 1em;
+    top: 15px;
+    right: 15px;
+    z-index: 300;
+    cursor: pointer;
 }
 
 /* ==========================================================================
