@@ -106,56 +106,11 @@ body {
 
 #overlay {
     visibility: hidden;
-    background-color: rgba(20, 20, 20, 0.9);
+    background-color: rgba(0, 0, 0, 0.85);
     position: fixed;
     height: 100%;
     width: 100%;
     z-index: 100;
-}
-
-#bigPicViewer {
-    visibility: inherit;
-    max-height: 95%;
-    max-width: 80%;
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 200;
-    user-select: none;
-}
-
-.pictureContainer {
-    position: relative;
-    display: inline-block;
-    height: 150px;
-    width: 150px;
-    margin-left: 5px;
-    z-index: 1;
-}
-
-.picture {
-    position: relative;
-    display: inline-block;
-    height: 150px;
-    width: 150px;
-    border-radius: 3px;
-    background-size: cover;
-    background-position: center;
-    opacity: 0;
-    transition: opacity 0.75s linear;
-    transition: transform 0.2s;
-    z-index: 1;
-    cursor: pointer;
-}
-
-.picture:hover {
-    position: absolute;
-    box-shadow: 0 0 10px white;
-    z-index: 10;
-    transform: scale(1.05);
-    transition: transform 0.2s;
-    transition: border-radius 0.2s;
 }
 
 #closeButton {
@@ -168,6 +123,94 @@ body {
     right: 15px;
     z-index: 300;
     cursor: pointer;
+}
+
+#bigPicContainer {
+    visibility: inherit;
+    width: 85%;
+    height: 95%;
+    background-color: black;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 150;
+}
+
+.navArrowContainer {
+    visibility: inherit;
+    position: absolute;
+    height: 100%;
+    width: 60px;
+    position: absolute;
+    z-index: 209;
+    cursor: pointer;
+}
+
+#rightNavArrowContainer {
+    right: 0;
+}
+
+.navArrow {
+    visibility: inherit;
+    opacity: 0;
+    height: 50px;
+    width: 50px;
+    position: absolute;
+    top: 50%;
+    z-index: 210;
+    user-select: none;
+    transition: opacity 0.2s;
+}
+
+#leftArrow {
+    right: 0;
+    transform: translateY(-50%);
+}
+
+#rightArrow {
+    transform: translateY(-50%) scaleX(-1);
+}
+
+#bigPicContainer:hover .navArrow {
+    opacity: 0.3;
+}
+
+#bigPicContainer:hover .navArrowContainer:hover .navArrow {
+    opacity: 1;
+}
+
+#bigPicViewer {
+    visibility: inherit;
+    max-height: 100%;
+    max-width: 95%;
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 200;
+    user-select: none;
+}
+
+.picture {
+    display: inline-block;
+    height: 150px;
+    width: 150px;
+    margin-left: 5px;
+    border-radius: 3px;
+    background-size: cover;
+    background-position: center;
+    opacity: 0;
+    z-index: 1;
+    cursor: pointer;
+    transition: opacity 0.75s;
+    transition: transform 0.2s;
+}
+
+.picture:hover {
+    box-shadow: 0 0 10px white;
+    z-index: 10;
+    transform: scale(1.05);
 }
 
 /* ==========================================================================

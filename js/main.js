@@ -5,16 +5,46 @@ var images = ['1.jpg', '2.jpg', '3.jpg', '4.jpg', '5.jpg', '6.jpg', '7.jpg', '8.
 var folder = 'img/'
 var currentDisplayedImage = 0;
 
-loadElements();
+configureElements();
+loadImages();
 showImages();
 
-function loadElements() {
-	var footer = document.getElementById('footer');
+function configureElements() {
+	var closeOverlay = function(event) {
+		if (event.target !== event.currentTarget) return;
+		$('#overlay').css('visibility', 'hidden');
+	};
+	$('#overlay').click(closeOverlay);
+	$('#closeButton').click(closeOverlay);
+
+	var navigateLeft = function() {
+		currentDisplayedImage = (currentDisplayedImage - 1 + images.length) % images.length;
+		$('#bigPicViewer').attr('src', folder + images[currentDisplayedImage]);
+	};
+	var navigateRight = function() {
+		currentDisplayedImage = (currentDisplayedImage + 1) % images.length;
+		$('#bigPicViewer').attr('src', folder + images[currentDisplayedImage]);
+	};
+	$('#leftNavArrowContainer').click(navigateLeft);
+	$('#rightNavArrowContainer').click(navigateRight);
+
+	$(document).keyup(function(e) {
+		if (e.keyCode == 27)	// ESC
+			$('#overlay').css('visibility', 'hidden');
+		if ($('#overlay').css('visibility') == 'visible') {
+			if (e.keyCode == 37) {	// left arrow
+				navigateLeft();
+			}
+			if (e.keyCode == 39) {	// right arrow
+				navigateRight();
+			}
+		}
+	});
+}
+
+function loadImages() {
 	for (let i = 0; i < images.length; i++) {
-		var outerDiv = document.createElement('div');
 		var innerDiv = document.createElement('div');
-		outerDiv.appendChild(innerDiv);
-		outerDiv.className = 'pictureContainer';
 		innerDiv.className = 'picture';
 		innerDiv.style['background-image'] = 'url("' + folder + images[i] + '")';
 		$(innerDiv).click(function() {
@@ -24,29 +54,8 @@ function loadElements() {
 				$('#overlay').css('visibility', 'visible');
 			});
 		});
-		document.body.insertBefore(outerDiv, footer);
+		$(innerDiv).insertBefore('#footer');
 	}
-
-	var closeOverlay = function(event) {
-		if (event.target !== event.currentTarget) return;
-		$('#overlay').css('visibility', 'hidden');
-	};
-	$('#overlay').click(closeOverlay);
-	$('#closeButton').click(closeOverlay);
-	$(document).keyup(function(e) {
-		if (e.keyCode == 27)	// ESC
-			$('#overlay').css('visibility', 'hidden');
-		if ($('#overlay').css('visibility') == 'visible') {
-			if (e.keyCode == 37) {	// left arrow
-					currentDisplayedImage = (currentDisplayedImage - 1 + images.length) % images.length;
-					$('#bigPicViewer').attr('src', folder + images[currentDisplayedImage]);
-			}
-			if (e.keyCode == 39) {	// right arrow
-				currentDisplayedImage = (currentDisplayedImage + 1) % images.length;
-				$('#bigPicViewer').attr('src', folder + images[currentDisplayedImage]);
-			}
-		}
-	});
 }
 
 function showImages() {
