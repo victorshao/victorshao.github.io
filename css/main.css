@@ -104,6 +104,27 @@ body {
     height: 50px;
 }
 
+.picture {
+    display: inline-block;
+    height: 150px;
+    width: 150px;
+    margin-left: 5px;
+    border-radius: 3px;
+    background-size: cover;
+    background-position: center;
+    opacity: 0;
+    z-index: 1;
+    cursor: pointer;
+    transition: opacity 0.75s;
+    transition: transform 0.2s;
+}
+
+.picture:hover {
+    box-shadow: 0 0 10px white;
+    z-index: 10;
+    transform: scale(1.05);
+}
+
 #overlay {
     visibility: hidden;
     background-color: rgba(0, 0, 0, 0.85);
@@ -192,25 +213,24 @@ body {
     user-select: none;
 }
 
-.picture {
-    display: inline-block;
-    height: 150px;
-    width: 150px;
-    margin-left: 5px;
-    border-radius: 3px;
-    background-size: cover;
-    background-position: center;
+#captionContainer {
+    visibility: inherit;
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+    padding: 0 15px 10px;
+    line-height: 15px;
+    z-index: 220;
     opacity: 0;
-    z-index: 1;
-    cursor: pointer;
-    transition: opacity 0.75s;
-    transition: transform 0.2s;
+    color: white;
+    font-size: 13px;
+    background-color: rgba(0, 0, 0, 0.4);
+    box-shadow: 0 0 25px 15px rgba(0, 0, 0, 0.4);
+    border: 0;
 }
 
-.picture:hover {
-    box-shadow: 0 0 10px white;
-    z-index: 10;
-    transform: scale(1.05);
+#bigPicContainer:hover #captionContainer {
+    opacity: 1;
 }
 
 /* ==========================================================================
