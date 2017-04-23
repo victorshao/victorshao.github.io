@@ -34,17 +34,17 @@ function configureElements() {
 	};
 	$('#overlay').click(closeOverlay);
 	$('#closeButton').click(closeOverlay);
-	// $('#captionContainer').html("Testing text! To be changed when I have real pictures to upload"); // temporary
+	$('#captionContainer').html("Testing text! To be changed when I have real pictures to upload"); // temporary
 
 	var navigateLeft = function() {
 		currentDisplayedImage = (currentDisplayedImage - 1 + images.length) % images.length;
 		$('#bigPicViewer').attr('src', folder + images[currentDisplayedImage].filename);
-		$('#captionContainer').html(images[currentDisplayedImage].caption);
+		// $('#captionContainer').html(images[currentDisplayedImage].caption);
 	};
 	var navigateRight = function() {
 		currentDisplayedImage = (currentDisplayedImage + 1) % images.length;
 		$('#bigPicViewer').attr('src', folder + images[currentDisplayedImage].filename);
-		$('#captionContainer').html(images[currentDisplayedImage].caption);
+		// $('#captionContainer').html(images[currentDisplayedImage].caption);
 	};
 	$('#leftNavArrowContainer').click(navigateLeft);
 	$('#rightNavArrowContainer').click(navigateRight);
@@ -71,7 +71,7 @@ function loadImages() {
 		$(innerDiv).click(function() {
 			currentDisplayedImage = i;
 			$('#bigPicViewer').attr('src', folder + images[i].filename);
-			$('#captionContainer').html(images[currentDisplayedImage].caption);
+			// $('#captionContainer').html(images[currentDisplayedImage].caption);
 			$('#bigPicViewer').on('load', function() {
 				$('#overlay').css('visibility', 'visible');
 			});
