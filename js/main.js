@@ -89,8 +89,8 @@ function showImages() {
 function showImage(imageList, imageNum) {
 	imageList[imageNum].style.opacity = 1;
 	if (imageNum + 1 < imageList.length) {
-		// setTimeout(function() {
+		setTimeout(function() {
 			showImage(imageList, imageNum + 1);
-		// }, 100);
+		}, 100);
 	}
 }
