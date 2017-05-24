@@ -116,9 +116,11 @@ body {
     z-index: 1;
     cursor: pointer;
     transition: transform 0.2s;
+    visibility: hidden;
 }
 
 .picture.showPic {
+    visibility: visible;
     opacity: 1;
     transition: opacity 1.5s;
 }
