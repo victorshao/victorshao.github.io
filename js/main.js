@@ -2,7 +2,7 @@
 
 let appState = {};
 
-$(function() {
+$(window).on("load", function() {
 	let images = [	{ filename:  '1.jpg', caption:  'test1'},
 					{ filename:  '2.jpg', caption:  'test2'},
 					{ filename:  '3.jpg', caption:  'test3'},
