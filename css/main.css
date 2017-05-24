@@ -189,6 +189,7 @@ body {
     z-index: 210;
     user-select: none;
     transition: opacity 0.2s;
+    draggable: false;
 }
 
 #leftArrow {

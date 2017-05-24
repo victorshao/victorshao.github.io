@@ -2,7 +2,7 @@
 
 let appState = {};
 
-$(window).on("load", function() {
+$(window).on('load', function() {
 	let images = [	{ filename:  '1.jpg', caption:  'test1'},
 					{ filename:  '2.jpg', caption:  'test2'},
 					{ filename:  '3.jpg', caption:  'test3'},
@@ -47,18 +47,19 @@ function configureElements() {
 		$('#bigPicViewer').attr('src', folder + images[appState.currentDisplayedImage].filename);
 		// $('#captionContainer').html(images[appState.currentDisplayedImage].caption);
 	};
-	$('#leftNavArrowContainer').click(galleryNavigate(true));
-	$('#rightNavArrowContainer').click(galleryNavigate(false));
+	$('#leftNavArrowContainer').click(() => { galleryNavigate(true); });
+	$('#rightNavArrowContainer').click(() => { galleryNavigate(false); });
+	$('.navArrow').on('dragstart', function(event) { event.preventDefault(); });
 
 	$(document).keyup(function(e) {
 		if (e.keyCode == 27)	// ESC
 			$('#overlay').css('visibility', 'hidden');
 		if ($('#overlay').css('visibility') == 'visible') {
 			if (e.keyCode == 37) {	// left arrow
-				navigateLeft();
+				galleryNavigate(true);
 			}
 			if (e.keyCode == 39) {	// right arrow
-				navigateRight();
+				galleryNavigate(false);
 			}
 		}
 	});
