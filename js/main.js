@@ -1,6 +1,6 @@
 'use strict';
 
-var images = [	{ filename: '1.jpg', caption: 'test1'},
+const images = [{ filename: '1.jpg', caption: 'test1'},
 				{ filename: '2.jpg', caption: 'test2'},
 				{ filename: '3.jpg', caption: 'test3'},
 				{ filename: '4.jpg', caption: 'test4'},
@@ -19,16 +19,16 @@ var images = [	{ filename: '1.jpg', caption: 'test1'},
 				{ filename: '17.jpg', caption: 'test17'},
 				{ filename: '18.jpg', caption: 'test18'},
 				{ filename: '19.jpg', caption: 'test19'},
-				{ filename: '20.jpg', caption: 'test20'}	];
-var folder = 'img/'
-var currentDisplayedImage = 0;
+				{ filename: '20.jpg', caption: 'test20'}];
+const folder = 'img/'
+let currentDisplayedImage = 0;
 
 configureElements();
 loadImages();
 showImages();
 
 function configureElements() {
-	var closeOverlay = function(event) {
+	const closeOverlay = function(event) {
 		if (event.target !== event.currentTarget) return;
 		$('#overlay').css('visibility', 'hidden');
 	};
@@ -36,12 +36,12 @@ function configureElements() {
 	$('#closeButton').click(closeOverlay);
 	$('#captionContainer').html("Testing text! To be changed when I have real pictures to upload"); // temporary
 
-	var navigateLeft = function() {
+	const navigateLeft = function() {
 		currentDisplayedImage = (currentDisplayedImage - 1 + images.length) % images.length;
 		$('#bigPicViewer').attr('src', folder + images[currentDisplayedImage].filename);
 		// $('#captionContainer').html(images[currentDisplayedImage].caption);
 	};
-	var navigateRight = function() {
+	const navigateRight = function() {
 		currentDisplayedImage = (currentDisplayedImage + 1) % images.length;
 		$('#bigPicViewer').attr('src', folder + images[currentDisplayedImage].filename);
 		// $('#captionContainer').html(images[currentDisplayedImage].caption);
@@ -65,7 +65,7 @@ function configureElements() {
 
 function loadImages() {
 	for (let i = 0; i < images.length; i++) {
-		var innerDiv = document.createElement('div');
+		const innerDiv = document.createElement('div');
 		innerDiv.className = 'picture';
 		innerDiv.style['background-image'] = 'url("' + folder + images[i].filename + '")';
 		$(innerDiv).click(function() {
@@ -81,16 +81,16 @@ function loadImages() {
 }
 
 function showImages() {
-	var imageList = document.getElementsByClassName('picture');
-	window.getComputedStyle(imageList[0]).opacity;
+	const imageList = document.getElementsByClassName('picture');
+	window.getComputedStyle(imageList[0]).opacity; // Force first image to opacity 0
 	showImage(imageList, 0);
 }
 
 function showImage(imageList, imageNum) {
-	imageList[imageNum].style.opacity = 1;
+	$(imageList[imageNum]).addClass("showPic");
 	if (imageNum + 1 < imageList.length) {
 		setTimeout(function() {
 			showImage(imageList, imageNum + 1);
-		}, 100);
+		}, 65);
 	}
 }

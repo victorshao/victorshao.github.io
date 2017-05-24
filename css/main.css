@@ -115,14 +115,19 @@ body {
     opacity: 0;
     z-index: 1;
     cursor: pointer;
-    transition: opacity 0.75s;
     transition: transform 0.2s;
+}
+
+.picture.showPic {
+    opacity: 1;
+    transition: opacity 1.5s;
 }
 
 .picture:hover {
     box-shadow: 0 0 10px white;
     z-index: 10;
     transform: scale(1.05);
+    transition: transform 0.2s;
 }
 
 #overlay {
