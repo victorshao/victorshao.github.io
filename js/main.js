@@ -2,56 +2,38 @@
 
 let appState = {};
 
-$(window).on('load', function() {
-	let images = [	{ filename:  '1.jpg', caption:  'test1'},
-					{ filename:  '2.jpg', caption:  'test2'},
-					{ filename:  '3.jpg', caption:  'test3'},
-					{ filename:  '4.jpg', caption:  'test4'},
-					{ filename:  '5.jpg', caption:  'test5'},
-					{ filename:  '6.jpg', caption:  'test6'},
-					{ filename:  '7.jpg', caption:  'test7'},
-					{ filename:  '8.jpg', caption:  'test8'},
-					{ filename:  '9.jpg', caption:  'test9'},
-					{ filename: '10.jpg', caption: 'test10'},
-					{ filename: '11.jpg', caption: 'test11'},
-					{ filename: '12.jpg', caption: 'test12'},
-					{ filename: '13.jpg', caption: 'test13'},
-					{ filename: '14.jpg', caption: 'test14'},
-					{ filename: '15.jpg', caption: 'test15'},
-					{ filename: '16.jpg', caption: 'test16'},
-					{ filename: '17.jpg', caption: 'test17'},
-					{ filename: '18.jpg', caption: 'test18'},
-					{ filename: '19.jpg', caption: 'test19'},
-					{ filename: '20.jpg', caption: 'test20'}];
-	let folder = 'img/'
+$(window).on('load', () => {
+	let folder = 'res/content/'
 	let currentDisplayedImage = 0;
-	appState = {images, folder, currentDisplayedImage};
+	appState = {folder, currentDisplayedImage};
 
-	configureElements();
-	loadImages();
-	showImages();
+	retrieveImages().then(() => {
+		configureElements();
+		loadImages();
+		showImages();
+	});
 });
 
 function configureElements() {
-	const closeOverlay = function(event) {
+	const closeOverlay = (event) => {
 		if (event.target !== event.currentTarget) return;
 		$('#overlay').css('visibility', 'hidden');
 	};
 	$('#overlay').click(closeOverlay);
 	$('#closeButton').click(closeOverlay);
-	$('#captionContainer').html("Testing text! To be changed when I have real pictures to upload"); // temporary
+	$('#captionContainer').html("Testing text! To be changed when I have real pictures to upload");
 
-	let images = appState.images, folder = appState.folder;
-	let galleryNavigate = function(goLeft) {
+	let images = appState.images;
+	let galleryNavigate = (goLeft) => {
 		appState.currentDisplayedImage = (appState.currentDisplayedImage + (goLeft ? images.length - 1 : 1)) % images.length;
-		$('#bigPicViewer').attr('src', folder + images[appState.currentDisplayedImage].filename);
+		$('#bigPicViewer').attr('src', images[appState.currentDisplayedImage].source);
 		// $('#captionContainer').html(images[appState.currentDisplayedImage].caption);
 	};
 	$('#leftNavArrowContainer').click(() => { galleryNavigate(true); });
 	$('#rightNavArrowContainer').click(() => { galleryNavigate(false); });
-	$('.navArrow').on('dragstart', function(event) { event.preventDefault(); });
+	$('.navArrow').on('dragstart', (event) => { event.preventDefault(); });
 
-	$(document).keyup(function(e) {
+	$(document).keyup((e) => {
 		if (e.keyCode == 27)	// ESC
 			$('#overlay').css('visibility', 'hidden');
 		if ($('#overlay').css('visibility') == 'visible') {
@@ -65,15 +47,25 @@ function configureElements() {
 	});
 }
 
+function retrieveImages() {
+	return $.get(`https://api.github.com/repos/victorshao/victorshao.github.io/contents/${appState.folder}`, (data) => {
+		let images = [];
+		data.forEach((val, i) => {
+			images.push({name: val.name, source: val.download_url});
+		});
+		appState.images = images;
+	});
+}
+
 function loadImages() {
-	let images = appState.images, folder = appState.folder;
+	let images = appState.images;
 	for (let i = 0; i < images.length; i++) {
 		const innerDiv = document.createElement('div');
 		innerDiv.className = 'picture';
-		innerDiv.style['background-image'] = 'url("' + folder + images[i].filename + '")';
-		$(innerDiv).click(function() {
+		innerDiv.style['background-image'] = `url(${images[i].source})`;
+		$(innerDiv).click(() => {
 			appState.currentDisplayedImage = i;
-			$('#bigPicViewer').attr('src', folder + images[i].filename);
+			$('#bigPicViewer').attr('src', images[i].source);
 			// $('#captionContainer').html(images[appState.currentDisplayedImage].caption);
 			$('#bigPicViewer').on('load', function() {
 				$('#overlay').css('visibility', 'visible');
@@ -92,7 +84,7 @@ function showImages() {
 function showImage(imageList, imageNum) {
 	$(imageList[imageNum]).addClass("showPic");
 	if (imageNum + 1 < imageList.length) {
-		setTimeout(function() {
+		setTimeout(() => {
 			showImage(imageList, imageNum + 1);
 		}, 65);
 	}
