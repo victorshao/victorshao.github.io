@@ -2,17 +2,28 @@
 
 let appState = {};
 
-$(window).on('load', () => {
+$(document).ready(() => {
 	let folder = 'res/content/'
 	let currentDisplayedImage = 0;
 	appState = {folder, currentDisplayedImage};
 
 	retrieveImages().then(() => {
 		configureElements();
-		loadImages();
+		return loadImages();
+	}).then(() => {
 		showImages();
 	});
 });
+
+function retrieveImages() {
+	return $.get(`https://api.github.com/repos/victorshao/victorshao.github.io/contents/${appState.folder}`, (data) => {
+		let images = [];
+		data.forEach((val, i) => {
+			images.push({name: val.name, source: val.download_url});
+		});
+		appState.images = images;
+	});
+}
 
 function configureElements() {
 	const closeOverlay = (event) => {
@@ -47,37 +58,34 @@ function configureElements() {
 	});
 }
 
-function retrieveImages() {
-	return $.get(`https://api.github.com/repos/victorshao/victorshao.github.io/contents/${appState.folder}`, (data) => {
-		let images = [];
-		data.forEach((val, i) => {
-			images.push({name: val.name, source: val.download_url});
-		});
-		appState.images = images;
-	});
-}
-
 function loadImages() {
 	let images = appState.images;
+	let promises = [];
 	for (let i = 0; i < images.length; i++) {
 		const innerDiv = document.createElement('div');
 		innerDiv.className = 'picture';
 		innerDiv.style['background-image'] = `url(${images[i].source})`;
+
+		let dfd = $.Deferred();
+		let img = new Image();
+		$(img).on('load', () => { dfd.resolve(); });
+		img.src = images[i].source;
+		promises.push(dfd.promise());
+		
 		$(innerDiv).click(() => {
 			appState.currentDisplayedImage = i;
 			$('#bigPicViewer').attr('src', images[i].source);
 			// $('#captionContainer').html(images[appState.currentDisplayedImage].caption);
-			$('#bigPicViewer').on('load', function() {
-				$('#overlay').css('visibility', 'visible');
-			});
+			$('#overlay').css('visibility', 'visible');
 		});
 		$(innerDiv).insertBefore('#footer');
 	}
+	return $.when.apply($, promises);
 }
 
 function showImages() {
 	const imageList = document.getElementsByClassName('picture');
-	window.getComputedStyle(imageList[0]).opacity; // Force first image to opacity 0
+	// window.getComputedStyle(imageList[0]).opacity; // Force first image to opacity 0
 	showImage(imageList, 0);
 }
 
